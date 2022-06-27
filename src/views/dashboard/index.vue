@@ -1,6 +1,8 @@
 <template>
   <div class="dashboard-container">
-    <div class="dashboard-text">name: {{ name }}</div>
+    <div class="dashboard-text">登录用户名: {{ userinfo.loginname }}</div>
+     <div class="dashboard-text">名称: {{ userinfo.name }}</div>
+      <div class="dashboard-text">角色名: {{ userinfo.rolename }}</div>
   </div>
 </template>
 
@@ -9,12 +11,14 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Dashboard',
-  computed: {
-    ...mapGetters([
-      'name'
-    ])
+  data:{
+    userinfo:{}
+  },
+  created(){
+    this.userinfo=this.$store.state.user.userinfo
   }
-}
+  }
+
 </script>
 
 <style lang="scss" scoped>

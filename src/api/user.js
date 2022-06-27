@@ -1,24 +1,13 @@
-import request from '@/utils/request'
+import requests from '@/api/request'
+import qs from 'qs'
 
-export function login(data) {
-  return request({
-    url: '/vue-admin-template/user/login',
-    method: 'post',
-    data
-  })
-}
+export const reqPostLogin=(data)=>requests({
+  url:'/user/login',
+  method:'post',
+  data:qs.stringify(data)
+  });
 
-export function getInfo(token) {
-  return request({
-    url: '/vue-admin-template/user/info',
-    method: 'get',
-    params: { token }
-  })
-}
-
-export function logout() {
-  return request({
-    url: '/vue-admin-template/user/logout',
-    method: 'post'
-  })
-}
+  export const reqGetUserInfo=()=>requests({
+      url:'/user/userinfo',
+      method:'get',
+      });
